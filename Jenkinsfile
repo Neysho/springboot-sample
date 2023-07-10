@@ -34,12 +34,19 @@ pipeline {
                     sh 'docker push neysho/springboot-sample:latest'
                 }
              }
-             stage('run image')
-             {
-                steps{
-                    sh 'docker run -d -p 8081:8081 neysho/springboot-sample:latest'
-                }
-             }
+            //  stage('run image')
+            //  {
+            //     steps{
+            //         sh 'docker run -d -p 8081:8081 neysho/springboot-sample:latest'
+            //     }
+            //  }
+             stage('Deploying React.js container to Kubernetes') {
+                steps {
+                   script {
+                      kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
+                      }
+                   }
+               }
         }
 
           post {
