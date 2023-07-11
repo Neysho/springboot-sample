@@ -35,22 +35,7 @@ pipeline {
                     sh 'docker push neysho/springboot-sample:latest'
                 }
              }
-            //  stage('run image')
-            //  {
-            //     steps{
-            //         sh 'docker run -d -p 8081:8081 neysho/springboot-sample:latest'
-            //     }
-            //  }
-            // deployment stage to kubernetes
-
-             stage('Deploying Spring Boot container to Kubernetes') {
-                steps {
-                   script {
-                        // kubernetesDeploy(configs: [kubeconfigFile(), 'deployment.yaml', 'service.yaml'],kubeconfigId: 'k8s-config')
-                        kubernetesDeploy (configs: "deployment.yaml",kubeconfigId: "k8s-config")
-                      }
-                   }
-               }
+           
         }
 
           post {
