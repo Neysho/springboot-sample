@@ -42,13 +42,13 @@ pipeline {
             //  }
             // deployment stage to kubernetes
 
-            //  stage('Deploying Spring Boot container to Kubernetes') {
-            //     steps {
-            //        script {
-            //             kubernetesDeploy(configs: [kubeconfigFile(), 'deployment.yaml', 'service.yaml'])
-            //           }
-            //        }
-            //    }
+             stage('Deploying Spring Boot container to Kubernetes') {
+                steps {
+                   script {
+                        kubernetesDeploy(configs: [kubeconfigFile(), 'deployment.yaml', 'service.yaml'],kubeconfigId: 'k8s-config')
+                      }
+                   }
+               }
         }
 
           post {
