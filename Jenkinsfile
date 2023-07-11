@@ -46,7 +46,7 @@ pipeline {
                 steps {
                    script {
                         // kubernetesDeploy(configs: [kubeconfigFile(), 'deployment.yaml', 'service.yaml'],kubeconfigId: 'k8s-config')
-                        kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "k8s-config")
+                        kubernetesDeploy (configs: "deployment.yaml", kubeconfigId: "k8s-config")
                       }
                    }
                }
