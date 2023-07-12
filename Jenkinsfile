@@ -16,6 +16,14 @@ pipeline {
                     sh 'mvn clean install'
                 }
             }
+
+            stage('SonarQube Analysis') {
+                //    def mvn = tool 'Default Maven';
+                   withSonarQubeEnv() {
+                   sh "${maven}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-sample"
+                 }
+                }
+
              stage('Build docker image'){
                         steps{
                             script{
@@ -40,7 +48,12 @@ pipeline {
 
           post {
             always {
-                sh 'docker logout'
+                script {
+                    sh 'docker logout'
+                    slackSend channel: '#jenkins-alerts', color: COLOR_MAP[currentBuild.currentResult],
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+           
+               }
             }
             }
     }
