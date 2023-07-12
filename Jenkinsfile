@@ -54,7 +54,7 @@ pipeline {
                     sh 'docker logout'
                     // slackSend channel: '#jenkins-alerts',  message: 'Deployment completed successfully!'
                     slackSend channel: '#jenkins-alerts', message: 'Deployment completed successfully!',
-                     teamDomain: 'dev.neysho', tokenCredentialId: 'slack-alert'
+                     teamDomain: 'devneysho', tokenCredentialId: 'slack-alert'
                }
             }
             }
