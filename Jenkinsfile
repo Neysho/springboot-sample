@@ -19,8 +19,8 @@ pipeline {
 
             stage('SonarQube Analysis') {
                 //    def mvn = tool 'Default Maven';
-                   withSonarQubeEnv() {
-                   sh "${maven}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-sample"
+                   withSonarQubeEnv('sonar-server') {
+                   sh 'mvn sonar:sonar -Dsonar.projectKey=springboot-sample'
                  }
                 }
 
