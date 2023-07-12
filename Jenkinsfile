@@ -17,11 +17,11 @@ pipeline {
                 }
             }
 
-            stage('SonarQube Analysis') {
+            stage('SonarQube Analysis'){
                 //    def mvn = tool 'Default Maven';
-                   withSonarQubeEnv('sonar-server') {
+                   
                    sh 'mvn sonar:sonar -Dsonar.projectKey=springboot-sample'
-                 }
+                 
                 }
 
              stage('Build docker image'){
