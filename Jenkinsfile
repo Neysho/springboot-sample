@@ -5,7 +5,7 @@ pipeline {
         // dockerTool 'docker'
     }
     environment{
-        DOCKERHUB_CREDENTIALS=credentials('635f714f-0de1-4726-b5cd-a6762965dc07')
+        DOCKERHUB_CREDENTIALS=credentials('')
         // BUILD_NUMBER = "${env.BUILD_NUMBER-SPRINGBOOT-SAMPLE}"
     }
 
